@@ -110,8 +110,8 @@ layers = basic_cnn_classifier();
 randimgs = randperm(length(imgs));
 imgs_train = imgs(:,:,:,randimgs(1:4000));
 labels_train = labels(randimgs(1:4000));
-imgs_val = imgs(:,:,:,randimgs(4001:5000));
-labels_val = labels(randimgs(4001:5000));
+imgs_val = imgs(:,:,:,randimgs(4001:4940));
+labels_val = labels(randimgs(4001:4940));
 
 net = train_classifier(layers, imgs_train,... 
     labels_train, imgs_val, labels_val)
@@ -126,8 +126,8 @@ layers = better_cnn_classifier();
 randimgs = randperm(length(imgs));
 imgs_train = imgs(:,:,:,randimgs(1:4000));
 labels_train = labels(randimgs(1:4000));
-imgs_val = imgs(:,:,:,randimgs(4001:5000));
-labels_val = labels(randimgs(4001:5000));
+imgs_val = imgs(:,:,:,randimgs(4001:4940));
+labels_val = labels(randimgs(4001:4940));
 
 net = train_classifier(layers, imgs_train,... 
     labels_train, imgs_val, labels_val)
