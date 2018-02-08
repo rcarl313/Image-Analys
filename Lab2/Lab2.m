@@ -124,10 +124,23 @@ net = train_classifier(layers, imgs_train,...
 %% 2.16 
 layers = better_cnn_classifier();
 randimgs = randperm(length(imgs));
-imgs_train = imgs(:,:,:,randimgs(1:4000));
-labels_train = labels(randimgs(1:4000));
+imgs_train = imgs(:,:,:,randimgs(1:4940));
+labels_train = labels(randimgs(1:4940));
 imgs_val = imgs(:,:,:,randimgs(4001:4940));
 labels_val = labels(randimgs(4001:4940));
 
-net = train_classifier(layers, imgs_train,... 
-    labels_train, imgs_val, labels_val)
+% net = train_classifier(layers, imgs_train,... 
+%     labels_train, imgs_val, labels_val)
+
+net = train_classifier(net.Layers, imgs_train, labels_train, imgs_val, labels_val)
+
+
+%% 2.17
+
+[imgs_test, labels_test] = digitTest4DArrayData;
+
+truelabel2 = net.classify(imgs_test) == labels_test;
+
+nbrcorr1 = (sum(truelabel2)/length(imgs_test))*100;
+
+disp([num2str(nbrcorr1) '% of the test numbers where classified correctly'])
