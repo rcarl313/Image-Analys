@@ -63,9 +63,9 @@ imagesc(w)
 
 %% 2.7
 
-img= read_image(['cells-test/042.png']); %Reads a test image
-probmap = sliding_window(img, w, w0); %Calls the made function sliding_window
-show_with_overlay(img, probmap>0.5) %Uses the given function to show an image with the probability of a cell
+img= read_image(['cells-test/042.png']);
+probmap = sliding_window(img, w, w0);
+show_with_overlay(img, probmap>0.5) %Uses the given function to show an image with 
 
 %% 2.8
 
