@@ -1,8 +1,9 @@
 function layers = basic_cnn_classifier()
-%Defines a basic cnn classifier that was given in the Lab-PM
+
 layers = [
 imageInputLayer([28 28 1]);
-convolution2dLayer(5, 20);
+convolution2dLayer(5, 20);%Create a 
+%convolutional layer with 20 filters that have a height and width of 5
 reluLayer();
 maxPooling2dLayer(2,'Stride', 2);
 fullyConnectedLayer(10);

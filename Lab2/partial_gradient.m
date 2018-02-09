@@ -11,7 +11,7 @@ p = 1/(exp(-y)+1);
 %dy/dw = I where I is an image
 % from chain rule we get dL_i/dw =(p-1)*I for positive imagaes and
 %dL_i/dw=p*I for negative images
-%dL_i/dw=(p-1)
+%dL_i/dw0=(p-1) --> (dL_i/dw0)*I = dL_i/dw
 w0grad = (p - label);
 wgrad = example .* w0grad;
 

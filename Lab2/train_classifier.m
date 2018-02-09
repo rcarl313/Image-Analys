@@ -1,23 +1,19 @@
-function net = train_classifier(layers, imgs_train, labels_train, imgs_val, labels_val,k)
-%Creates a network with the MATLAB-Function trainNetwork.
-%The network is trained with a set of data that includes both training
-%images and validation images. 
+function net = train_classifier(layers, imgs_train, labels_train, imgs_val, labels_val, k)
 
-
-options = trainingOptions('sgdm',...        %Defines the options for the network
+options = trainingOptions('sgdm',...
             'LearnRateSchedule', 'piecewise', ...
-            'LearnRateDropFactor', 0.95, ...
+            'LearnRateDropFactor', 0.7, ...
             'LearnRateDropPeriod', 1, ...
             'MaxEpochs', 5, ...
-            'InitialLearnRate', 0.2*0.95^(5*(k-1)));
+            'InitialLearnRate', 0.2*0.7^(k-1));
 
-net = trainNetwork(imgs_train, labels_train, layers, options); %Uses the MATLAB-function trainNetwork to train a convolutional neural network
+net = trainNetwork(imgs_train, labels_train, layers, options);
 
-truelabel = net.classify(imgs_val) == labels_val; %Calculates the correectly classified images
+     truelabel = net.classify(imgs_val) == labels_val;
 
-nbrcorr = (sum(truelabel)/length(imgs_val))*100; %Calculates the epercentage of correctly classifed images
+nbrcorr = (sum(truelabel)/length(imgs_val))*100;
 
-disp([num2str(nbrcorr) '% of the validation numbers where classified correctly']) %Displays the percentage
+disp([num2str(nbrcorr) '% of the validation numbers where classified correctly'])
 
 
 
